@@ -10,7 +10,14 @@ appender("FILE", FileAppender) {
     }
 }
 
-logger("groovy-scripts", DEBUG, ["FILE"])
-logger("pt.francisco.util", DEBUG, ["FILE"])
+appender("FILE-DEBUG", FileAppender) {
+    file = "log-debug-${byDay}.txt"
+    encoder(PatternLayoutEncoder) {
+        pattern = "%msg%n"
+    }
+}
+
+logger("groovy-scripts", DEBUG, ["FILE-DEBUG"])
+logger("pt.francisco.util", DEBUG, ["FILE-DEBUG"])
 
 root(INFO, ["FILE"])

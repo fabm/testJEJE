@@ -9,7 +9,14 @@ response.contentType = 'application/javascript'
 
 JsonSlurper jsonSlurper = new JsonSlurper()
 
-log.debug new File('.').listFiles().collect {it.name}.join(', ')
+File myFile
+
+log.debug 'file->\n  ' +
+        ''+(myFile?.listFiles()?.collect {it.name} ?.join(', \n  ') ?: '  (null)')
+
+myFile = new File('.')
+log.debug 'file->\n  ' +
+        ''+(myFile?.listFiles()?.collect {it.name} ?.join(', \n  ') ?: '  (null)')
 
 def json = jsonSlurper.parse(request.reader)
 
