@@ -17,8 +17,16 @@ processResources {
     }
 }
 
+task runApp(type: JavaExec) {
+    classpath = sourceSets.main.runtimeClasspath
+
+    main = 'pt.francisco.server.Jeje'
+
+
+}
 
 dependencies {
+    compile 'ch.qos.logback:logback-classic:1.0.13'
     compile 'org.mortbay.jetty:jetty-embedded:6.1.26'
     compile 'org.codehaus.groovy:groovy-all:2.3.11'
     testCompile group: 'junit', name: 'junit', version: '4.11'

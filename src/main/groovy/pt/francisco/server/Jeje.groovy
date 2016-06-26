@@ -1,4 +1,4 @@
-package pt.francisco
+package pt.francisco.server
 
 import groovy.servlet.GroovyServlet
 import groovy.servlet.TemplateServlet
@@ -8,8 +8,6 @@ import org.mortbay.jetty.servlet.DefaultServlet
 import org.mortbay.servlet.MultiPartFilter
 
 import java.nio.file.Paths
-
-println getClass().getResource('/static')
 
 new Server(9090).with {
     new Context(it, '/', Context.SESSIONS).with {
