@@ -13,7 +13,7 @@ appender("FILE", FileAppender) {
 appender("FILE-DEBUG", FileAppender) {
     file = "log-debug-${byDay}.txt"
     encoder(PatternLayoutEncoder) {
-        pattern = "%msg%n"
+        pattern = "%70logger{70} - %msg%n"
     }
 }
 
@@ -21,3 +21,5 @@ logger("groovy-scripts", DEBUG, ["FILE-DEBUG"])
 logger("pt.francisco.util", DEBUG, ["FILE-DEBUG"])
 
 root(INFO, ["FILE"])
+
+scan('5 seconds')
