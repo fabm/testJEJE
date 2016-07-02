@@ -30,8 +30,7 @@ new Server(9090).with {
 
         addServlet new ServletHolder(new HttpServlet(){
             @Override
-            void service(ServletRequest req, ServletResponse res) throws ServletException, IOException {
-                assert res instanceof HttpServletResponse
+            void service(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
                 res.sendRedirect '/static/generators.html'
             }
         }), '/*'
