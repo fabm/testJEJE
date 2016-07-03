@@ -1,0 +1,41 @@
+{
+  "menu": {
+    "items": [
+      {
+        "menu": {
+          "hidden": [
+            "m_primeiro"
+          ],
+          "title": "primeiro",
+          "items": [
+            {
+              "menu": {
+                "title": "primeiro.primeiro",
+                "items": [
+                  {
+                    "menu": {
+                      "title":"primeiro_1",
+                      "hidden": [
+                        "m_primeiro_primeiro"
+                      ],
+                      "link": "../../Primeiro/Primeiro_1/index.jsp"
+                    }
+                  },
+                  {
+                    "menu": {
+                      "title":"primeiro_2",
+                      "hidden": [
+                        "m_primeiro_primeiro"
+                      ],
+                      "link": "../../Primeiro/Primeiro_1/index.jsp"
+                    }
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      }
+    ]
+  }
+}

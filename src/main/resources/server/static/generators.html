@@ -5,12 +5,12 @@
 
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="jsoneditor.min.css" rel="stylesheet" type="text/css">
-    <link>
     <link href="css/bootstrap.min.css" rel="stylesheet" type="text/css">
 </head>
 <script src="jquery-2.2.4.min.js"></script>
 <script src="js/bootstrap.min.js"></script>
 <script src="jsoneditor.min.js"></script>
+<script src="js/bootstrap-treeview.js"></script>
 
 <style type="text/css">
 
@@ -68,12 +68,14 @@
                     <div id="jsoneditor"></div>
                     <p id="applyButton"><a class="btn btn-default" href="#" role="button">Apply »</a></p>
                 </div>
-                <div>
+                <div class="col-lg-4">
                     <h2>Actions buttons</h2>
                     <div class="btn-group-vertical" role="group" aria-label="...">
                         <button type="button" class="btn btn-default" id="addScreenAction">Screen</button>
                         <button type="button" class="btn btn-default" id="addDbridgeAction">Dbridge</button>
                     </div>
+                    <h2>Menus</h2>
+                    <div id="menu-tree" ></div>
                 </div>
             </div>
             <div class="col-lg-6">
