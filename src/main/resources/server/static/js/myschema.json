@@ -1,0 +1,76 @@
+{
+  "type": "object",
+  "description":"Json schema",
+  "properties": {
+    "actions": {
+      "type": "array",
+      "description":"my actions",
+      "items":
+      {
+        "$ref": "#/definitions/action"
+      }
+    }
+  },
+  "definitions": {
+    "action":{
+      "type": "object",
+      "anyOf": [
+        {"$ref": "#/definitions/screen"},
+        {"$ref": "#/definitions/dbridge"}
+      ]
+    },
+    "dbridge": {
+      "type": "object",
+      "properties": {
+        "dbridge": {
+          "type": "object",
+          "properties": {
+            "proc": {
+              "type": "object",
+              "properties": {
+                "name": {
+                  "type": "string"
+                },
+                "database": {
+                  "type": "string"
+                }
+              },
+              "required": ["name"]
+            }
+          },
+          "required": ["proc"]
+        }
+      },
+      "required": ["dbridge"]
+    },
+    "screen": {
+      "type": "object",
+      "properties": {
+        "screen": {
+          "description":"screen",
+          "type": "object",
+          "properties": {
+            "name": {
+              "type": "string",
+              "default":"xpto"
+            },
+            "windowName": {
+              "type": "string"
+            },
+            "menuStack": {
+              "type": "object",
+              "properties": {
+                "identifier": {
+                  "type": "string"
+                }
+              },
+              "required": ["identifier"]
+            }
+          },
+          "required": ["name", "windowName"]
+        }
+      },
+      "required": ["screen"]
+    }
+  }
+}

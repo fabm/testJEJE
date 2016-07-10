@@ -1,31 +1,3 @@
-var options = {
-    mode: 'tree',
-    modes: ['code', 'form', 'text', 'tree', 'view'], // allowed modes
-    onError: function (err) {
-        alert(err.toString());
-    },
-    onModeChange: function (newMode, oldMode) {
-        console.log('Mode switched from', oldMode, 'to', newMode);
-    }
-};
-
-$.getJSON( "js/myschema.json", function(data) {
-    // create the editor
-    options.schema = data;
-    var container = document.getElementById('jsoneditor');
-    var editor = new JSONEditor(container, options,{});
-    require.config({ baseUrl: "js"});
-    require(['docson','lib/jquery'],function(docson){
-        docson.templateBaseUrl="templates";
-        docson.doc("doc", options.schema);
-    });
-});
-
-
-
-
-
-
 $('#applyButton').click(function () {
     $('#modalConfirm').modal('show');
 
@@ -110,6 +82,35 @@ $.ajax({
     type: 'GET'
 }).done(function (data) {
     menu.all = data;
+    //var toTree = {core: {data: []}};
+    //var map = {};
+    //var counter = 0;
+
+    /*
+     var itemsRecursive = function (items, treeNode) {
+     for (re in items) {
+     var item = items[re];
+     var iitems = item.menu.items;
+     counter++;
+     var currentTreeNonde = {
+     'text': item.menu.title,
+     'id': counter
+     };
+     map[counter] = item;
+     treeNode.push(currentTreeNonde);
+     if (typeof (iitems) === 'object') {
+     currentTreeNonde.nodes = [];
+     itemsRecursive(iitems, currentTreeNonde.nodes);
+     }
+     }
+     };
+
+     itemsRecursive(menu.all.menu.items, toTree.core.data);
+    toTree.core.onNodeSelected = function (event, node) {
+        menu.current = map[node.id];
+    };
+    $('#menu-tree').treeview(toTree.core);
+     */
     menu.refreshMenu();
 });
 
@@ -129,44 +130,4 @@ var updateMenu = function () {
     }).done(function (data) {
         console.log(data);
     });
-};
-
-var doms = {};
-
-var loadCoolButtons = function(id){
-    $.ajax({
-        url: '/static/panels/testPanel.html',
-        type: 'GET'
-    }).done(function (data) {
-        var dt = $(data);
-
-        doms = dt;
-
-        $('#loadMenu').html(dt.find(id).html());
-        dt.remove();
-    });
-};
-var removeCoolButtons = function(){
-    $('#loadMenu').html('');
-};
-
-$(function(){
-
-    $(window).hashchange( function(){
-        var hash = location.hash;
-
-        document.title = 'The hash is ' + ( hash.replace( /^#/, '' ) || 'blank' ) + '.';
-
-        if(hash === '#test1'){
-            loadCoolButtons('#tpl-1');
-        }else if(hash === '#test2'){
-            loadCoolButtons('#tpl-2');
-        }else{
-            removeCoolButtons();
-        }
-
-    });
-
-    //$(window).hashchange();
-
-});
+}
