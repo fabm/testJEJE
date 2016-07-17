@@ -8,17 +8,12 @@ var options = {
         console.log('Mode switched from', oldMode, 'to', newMode);
     }
 };
-
+var editor;
 $.getJSON( "js/myschema.json", function(data) {
     // create the editor
     options.schema = data;
     var container = document.getElementById('jsoneditor');
-    var editor = new JSONEditor(container, options,{});
-    require.config({ baseUrl: "js"});
-    require(['docson','lib/jquery'],function(docson){
-        docson.templateBaseUrl="templates";
-        docson.doc("doc", options.schema);
-    });
+    editor = new JSONEditor(container, options,{});
 });
 
 
@@ -36,6 +31,7 @@ $('#applyButton').click(function () {
     $('#modalConfirmButton').click(function () {
         $('#modalConfirmButton').unbind('click');
         $.ajax({
+            headers:{'accessToken':sessionStorage.getItem('accessToken')},
             url: '/groovy/recieve',
             contentType: 'application/json',
             dataType: 'json',
@@ -150,23 +146,3 @@ var removeCoolButtons = function(){
     $('#loadMenu').html('');
 };
 
-$(function(){
-
-    $(window).hashchange( function(){
-        var hash = location.hash;
-
-        document.title = 'The hash is ' + ( hash.replace( /^#/, '' ) || 'blank' ) + '.';
-
-        if(hash === '#test1'){
-            loadCoolButtons('#tpl-1');
-        }else if(hash === '#test2'){
-            loadCoolButtons('#tpl-2');
-        }else{
-            removeCoolButtons();
-        }
-
-    });
-
-    //$(window).hashchange();
-
-});

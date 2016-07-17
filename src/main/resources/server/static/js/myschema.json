@@ -15,7 +15,7 @@
     "action":{
       "type": "object",
       "anyOf": [
-        {"$ref": "#/definitions/screen"},
+        {"$ref": "#/definitions/screen action"},
         {"$ref": "#/definitions/dbridge"}
       ]
     },
@@ -24,6 +24,7 @@
       "properties": {
         "dbridge": {
           "type": "object",
+          "description":"database action to add to dbridge.xml",
           "properties": {
             "proc": {
               "type": "object",
@@ -43,7 +44,7 @@
       },
       "required": ["dbridge"]
     },
-    "screen": {
+    "screen action": {
       "type": "object",
       "properties": {
         "screen": {

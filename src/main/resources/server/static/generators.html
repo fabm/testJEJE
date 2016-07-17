@@ -6,11 +6,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="css/jsoneditor.min.css" rel="stylesheet" type="text/css">
     <link href="css/bootstrap.min.css" rel="stylesheet" type="text/css">
+
     <script src="jquery-2.2.4.min.js"></script>
-    <script src="js/bootstrap.min.js"></script>
+    <script src="js/bootstrap.js"></script>
     <script src="js/lib/jsoneditor.min.js"></script>
     <script src="js/bootstrap-treeview.js"></script>
-    <script src="js/jquery.ba-hashchange.min.js"></script>
     <link rel="stylesheet" href="css/docson.css">
     <script src="js/lib/require.js"></script>
 
@@ -84,7 +84,8 @@
             <div class="col-lg-6">
                 <h2>Aditional tasks</h2>
                 <a href="#" id="reloadDbridge">Reload dbridge</a>
-                <div id="doc"></div>
+                <script src="js/docson/widget.js" data-schema="/static/js/myschema.json">
+                </script>
             </div>
         </div>
     </div>
